@@ -23,13 +23,25 @@ if (!require("MASS")){
   install.packages("MASS", dependencies = TRUE)
   library(MASS)
 }
+if (!require("ggplot2")){
+  install.packages("ggplot2", dependencies = TRUE)
+  library(ggplot2)
+}
+if (!require("FactoMineR")){
+  install.packages("FactoMineR", dependencies = TRUE)
+  library(FactoMineR)
+}
+if (!require("FactoMineR")){
+  install.packages("FactoMineR", dependencies = TRUE)
+  library(FactoMineR)
+}
 
 #########################################################
 ###              working directory                    ###
 #########################################################
 
 
-setwd("C:/Users/mdinclaux/Documents/Script/TWB_Processing")
+setwd("~/Script/TWB/Vibrio_processing")
 
 rawdata <- read.xlsx("2022-09-30_Combinatoire VIBI_CONSTITUTIF.xlsx", header = TRUE, sheetName = "Bilan Constitutif")
 
