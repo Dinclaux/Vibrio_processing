@@ -18,6 +18,10 @@ if (!require("xlsx")){
   install.packages("xlsx", dependencies = TRUE)
   library(xlsx)
 }
+if (!require("remotes")){
+  install.packages("remotes", dependencies = TRUE)
+  library(remotes)
+}
 if (!require("dplyr")){
   install.packages("dplyr", dependencies = TRUE)
   library(dplyr)
@@ -38,7 +42,6 @@ if (!require("ggplot2")){
 #########################################################
 ###              working directory                    ###
 #########################################################
-
 
 setwd("~/Script/TWB/Vibrio_processing/Sans conta blanc")
 
