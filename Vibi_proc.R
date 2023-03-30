@@ -40,22 +40,9 @@ if (!require("ggplot2")){
 #########################################################
 
 
-setwd("~/Script/TWB/Vibrio_processing/Sans conta blanc")
+setwd("~/Script/TWB/Vibrio_processing/Prétraitement constitutif PC journée/")
 
-batch = c("220719-Data cinétique Constitutif 1 alpha.xlsx",
-          "220720-Data cinétique Constitutif 1 gamma.xlsx",
-          "220721-Data cinétique Constitutif 1 Delta.xlsx",
-          "220721-Data cinétique Constitutif 2 beta.xlsx",
-          "220726-Data cinétique Constitutif 3 reste Sauf ParaBAD et Ptac plaque alpha.xlsx",
-          "220801-Data cinetique Constitutif 1 gamma bis.xlsx",
-          "220802-Data cinetique Constitutif 1 beta bis.xlsx",
-          "220823-Data cinetique Constitutif 2 alpha bis.xlsx",
-          "230213_Constitutif1 alpha.xlsx",
-          "230214_Constitutif1 gamma.xlsx",
-          "230215_Constitutif1 delta.xlsx",
-          "230216_Constitutif2 alpha.xlsx",
-          "230216_Constitutif2 beta.xlsx",
-          "230221_Constitutif1 beta bis.xlsx")
+batch = list.files(pattern = "*.xlsx")
  
 ODseq =c()
 ODseq = seq(0.200,0.800, by = 0.05)
@@ -85,7 +72,7 @@ setTxtProgressBar(pb, progressbar)  # Sets the progress bar to the current state
 filename = batch[b]
 
 
-data_OD <- read.xlsx(filename, header = TRUE, sheetName = "Do600", check.names = FALSE)
+data_OD <- read.xlsx(filename, header = TRUE, sheetName = "DO600", check.names = FALSE)
 data_scarlet <- read.xlsx(filename, header = TRUE, sheetName = "mScarlet", check.names = FALSE)
 
 # Supprimer les lignes avec des valeurs manquantes

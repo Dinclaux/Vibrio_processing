@@ -14,7 +14,7 @@ library(gridExtra)
 ###              working directory                    ###
 #########################################################
 # Changer le répertoire de travail
-setwd("~/Script/TWB/Vibrio_processing/Sans conta blanc/Proc_barplot/")
+setwd("~/Script/TWB/Vibrio_processing/Prétraitement constitutif PC journée/R/Total/Visu/")
 
 # Récupérer la liste des fichiers Excel dans le dossier
 file_names <- list.files(pattern = "*.xlsx")
@@ -58,8 +58,8 @@ for (i in seq_along(file_names)) {
 all_data <- dplyr::bind_rows(data_list)
 
 # Définir une plage de valeurs à afficher
-plage_min <- 100
-plage_max <- 5000
+plage_min <- 0
+plage_max <- 12000
 
 # Filtrer les données selon la plage minimale et maximale
 all_data <- all_data %>%
@@ -80,13 +80,13 @@ all_data$Experiences <- as.factor(all_data$Experiences)
 
 p<-ggplot(data = all_data, aes(x = Souches, y = mean_y, fill = high_sd)) +
   geom_bar(stat = "identity", color = "black", width = 0.6) +
-  scale_y_continuous(limits = c(0, 5000), breaks = seq(0, 5000, 2500))+
+  scale_y_continuous(limits = c(0, 12000), breaks = seq(0, 12000, 6000))+
   scale_fill_manual(values = c("blue", "red"), guide = guide_legend(title = "Construits"),labels = c("Valide", "Sd > 20%", "Simplica")) +
   geom_errorbar(aes(ymin = mean_y - sd_y, ymax = mean_y + sd_y),
                 width = 0.4) +
   labs(x = "Construits", y = "Ratio Scarlet/OD") +
   theme_minimal()+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 5,vjust = 0.2))
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 9,vjust = 0.2))
 
 p + facet_wrap(~ Experiences, ncol = 1, scales = "fixed")
 
